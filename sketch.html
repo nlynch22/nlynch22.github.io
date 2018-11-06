@@ -1,0 +1,107 @@
+    <!DOCTYPE html>
+    <html>
+    	<head>
+        <title>Nadia's Portfolio </title>
+    		<meta charset="utf-8">
+    		<style>
+    			body {
+    				background-color: #838b83;
+    				margin: 0;
+    				overflow: hidden;
+    			}
+    		</style>
+    	</head>
+    	<body>
+
+        <style>
+        p.serif {
+            font-family: "Times New Roman", Times, serif;
+        }
+
+
+        }
+
+        h1 {
+            color: 8b8682;
+        }
+        </style>
+        </head>
+        <body>
+
+    		<script src="JS/three.min.js"></script>
+    		<script src="JS/Detector.js"></script>
+    		<script>
+
+    			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+    			var camera, scene, renderer;
+    			var geometry, material, mesh;
+
+    			function setup() {
+
+    				var W = window.innerWidth, H = window.innerHeight;
+    				renderer = new THREE.WebGLRenderer();
+    				renderer.setSize( W, H );
+    				document.body.appendChild( renderer.domElement );
+
+    				camera = new THREE.PerspectiveCamera( 50, W/H, 1, 10000 );
+    				camera.position.z = 500;
+
+    				scene = new THREE.Scene();
+
+
+    				// paste your code from the geometryGUI here
+
+
+    			}
+
+    			function draw() { geometry = new THREE.TorusGeometry(111, 11.78, 40, 18, 25.13);
+    material = new THREE.MeshNormalMaterial({shading: THREE.SmoothShading, transparent: true, opacity: 1});
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
+    mesh.position.y = 55.14;
+    mesh.rotation.y = 4.85;
+    mesh.rotation.z = 5.82;
+    scene.add(mesh);
+
+    bg = document.body.style;
+    bg.background = '#f2f2fa';
+
+    scene.fog = new THREE.Fog( 0x418aff, 9264.25, 6397.05 );hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.2);
+    scene.add( hemisphereLight );
+
+    directionalLight = new THREE.DirectionalLight(0xffffff, 0.1);
+    directionalLight.position.set( -1.03, 1, 4.43 );
+    directionalLight.castShadow = true;
+    scene.add( directionalLight );
+
+    spotLight1 = new THREE.SpotLight( 0xffffff, 0.1 );
+    spotLight1.position.set( 100, 1000, 100 );
+    spotLight1.castShadow = true;
+    spotLight1.shadowDarkness = 0.2;
+    scene.add( spotLight1 );
+
+    spotLight2 = new THREE.SpotLight( 0xffffff, 8.49 );
+    spotLight2.position.set( 100, 1000, 100 );
+    spotLight2.castShadow = true;
+    spotLight2.shadowDarkness = 0.2;
+    scene.add( spotLight2 );
+    mesh.rotation.x = Date.now() * 0.0005;
+    				mesh.rotation.y = Date.now() * 0.0002;
+    				mesh.rotation.z = Date.now() * 0.001;
+    				requestAnimationFrame( draw );
+
+    				// experiment with code from the snippets menu here
+
+    				renderer.render( scene, camera );
+
+    			}
+
+    			setup();
+    			draw();
+
+
+    		</script>
+
+    	</body>
+    </html>
